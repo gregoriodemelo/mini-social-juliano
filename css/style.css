@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #000;
+  background-color: #191970;
   color: #fff;
 }
 
@@ -23,7 +23,7 @@ header {
 }
 
 .post {
-  background-color: #0f1f16;
+  background-color: #4169E1;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px #0f1f16;
@@ -53,7 +53,7 @@ header {
 }
 
 .username {
-  color: #888;
+  color: #EEE8AA;
   margin-left: 5px;
 }
 
@@ -66,7 +66,7 @@ header {
 }
 
 button {
-  background-color: #1f3d2b;
+  background-color: #ADD8E6;
   color: #fff;
   border: none;
   padding: 8px 15px;
