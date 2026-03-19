@@ -1,4 +1,5 @@
 let likeCount = 0;
+let curtido = false;
 
 function curtir() {
   likeCount++;
