@@ -1,88 +1,63 @@
-// === "BANCO DE DADOS (JSON Simulado)" === 
+//=== ESTADO (dados da aplicação) === 
 
-let post = {
-  likeCount: 0,
-  dislikeCount: 0,
-  curtido: false,
-  descurtido: false
-}
+let likeCount = 0;
+let dislikeCount = 0;
+let curtido = false;
+let descurtido = false;
 
-// === SERVICE (regras de negócio)
+//=== SERVICE (regras de negócio) === 
+
 function curtir() {
-  if (post.curtido == false){
-    post.likeCount++;
-    post.curtido = true;
-    
+  if (curtido == false){
+    likeCount++;
+    curtido = true;
+    document.getElementById("likeCount").innerText = likeCount;
 
-    if(post.descurtido == true){
-      post.dislikeCount--;
-      post.descurtido = false;
+    if(descurtido == true){
+      dislikeCount--;
+      descurtido = false;
+      document.getElementById("dislikeCount").innerText = dislikeCount;
+
     }
 
   }else{
-    post.likeCount--;
-    post.curtido = false;
+    likeCount--;
+    curtido = false;
+    document.getElementById("likeCount").innerText = likeCount;
   }
 
 }
 
 function descurtir() {
-  if(post.descurtido == false){
-    post.dislikeCount++;
-    post.descurtido = true;
-    
+  if(descurtido == false){
+    dislikeCount++;
+    descurtido = true;
+    document.getElementById("dislikeCount").innerText = dislikeCount;
 
-    if(post.curtido == true){
-      post.likeCount--;
-      post.curtido = false;
+    if(curtido == true){
+      likeCount--;
+      curtido = false;
+      document.getElementById("likeCount").innerText = likeCount;
     }
 
   }
   else{
-    post.dislikeCount--;
-    post.descurtido = false;
+    dislikeCount--;
+    descurtido = false;
+    document.getElementById("dislikeCount").innerText = dislikeCount;
   }
 }
 
-//=== API SIMULADA === 
-
-function getPost(){
-  return post;
-}
-
-function likePost(){
-  curtir ();
-  return post;
-}
-
-function dislikePost(){
-  descurtir ();
-  return post;
-}
-
-//=== VIEWS (interface)===
-
-function atualizarTela(dados){
-  document.getElementById("likeCount").innerText = dados.likeCount;
-  document.getElementById("dislikeCount").innerText = dados.dislikeCount;
-}
-
-//=== CONTROLLER (intermediação evento/regras de negócio)
+//=== CONTROLLER (intermediação)===
 
 function clicarCurtir(){
-  let dados = likePost();
-  atualizarTela(dados);
+  curtir();
 }
 function clicarDescurtir(){
-  let dados = dislikePost();
-  atualizarTela(dados);
+  descurtir();
 }
 
+// === EVENTOS ===
 
-// === EVENTOS ====
 document.getElementById("likeBtn").addEventListener("click", clicarCurtir);
 document.getElementById("dislikeBtn").addEventListener("click", clicarDescurtir);
-
-// === INICIALIZAÇÃO DE TELA ===
-
-atualizarTela(getPost());
